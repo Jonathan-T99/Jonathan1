@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonathan Twizere - Backend Developer & Sustainability Innovator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2e8b57;
+            --secondary-color: #f8f9fa;
+            --accent-color: #20c997;
+            --dark-green: #1a5c3d;
+            --text-color: #333;
+            --light-text: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-green));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,213.3C1248,235,1344,213,1392,202.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .profile-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 20px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .social-links a:hover {
+            background-color: white;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-3px);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        h2 i {
+            margin-right: 10px;
+            background-color: var(--secondary-color);
+            padding: 10px;
+            border-radius: 50%;
+            color: var(--primary-color);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .skills-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .skill-category {
+            margin-bottom: 20px;
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill {
+            background-color: var(--secondary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        
+        .skill:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .project-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-img {
+            height: 180px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .project-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .project-description {
+            color: var(--light-text);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            flex-grow: 1;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .tech-tag {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+        
+        .project-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .project-links a:hover {
+            color: var(--dark-green);
+            transform: translateY(-2px);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .stat-card {
+            padding: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: var(--light-text);
+        }
+        
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .cert-card {
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            background-color: var(--secondary-color);
+            border-radius: 4px;
+        }
+        
+        .cert-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .cert-org {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .cert-desc {
+            font-size: 0.9rem;
+        }
+        
+        .quote {
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            margin: 30px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+        
+        .farmconnect-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+        }
+        
+        .feature i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .projects-grid, .certifications {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-content">
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>Jonathan Twizere</h1>
+            <p class="tagline"> Environmental Chemistry Graduate |Backend Developer | Sustainable Tech Innovator</p>
+            
+            <!-- Social / Contact Links -->
+            <div class="social-links">
+                <a href="https://github.com/Jonathan-T99" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub profile">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://linkedin.com/in/jonathantwizere" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="mailto:jonathantwizere@gmail.com" aria-label="Send me an email">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2><i class="fas fa-user"></i> About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a <strong>Backend Developer</strong> passionate about leveraging <strong>technology to fight climate change</strong> by making agriculture smarter and more sustainable. With a background in <strong>Environmental Chemistry</strong>, I'm building <strong>FarmConnect</strong> - a platform that assists farmers with data-driven decisions to reduce greenhouse gas emissions while improving harvests.</p>
+                    <p>My journey into tech was inspired by my observations during my chemistry studies about how agriculture contributes significantly to greenhouse gas emissions despite low yields. I'm currently honing my backend development skills at <strong>ALX</strong>, focusing on building robust, scalable systems that can power applications like FarmConnect to make a real-world impact.</p>
+                </div>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Backend Technologies</h3>
+                        <div class="skills-list">
+                            <span class="skill">Python</span>
+                            <span class="skill">Dart</span>
+                            <span class="skill">JavaScript</span>
+                            <span class="skill">Node.js</span>
+                            <span class="skill">Express</span>
+                            <span class="skill">Django REST</span>
+                            <span class="skill">PostgreSQL</span>
+                            <span class="skill">MongoDB</span>
+                            <span class="skill">REST APIs</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-mobile-alt"></i> Frontend & Mobile</h3>
+                        <div class="skills-list">
+                            <span class="skill">Flutter</span>
+                            <span class="skill">HTML/CSS</span>
+                            <span class="skill">React</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-leaf"></i> Domain Knowledge</h3>
+                        <div class="skills-list">
+                            <span class="skill">Environmental Science</span>
+                            <span class="skill">Sustainable Agriculture</span>
+                            <span class="skill">AI/ML Fundamentals</span>
+                            <span class="skill">Bioinformatics</span>
+                            <span class="skill">Data Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="farmconnect">
+            <h2><i class="fas fa-seedling"></i> FarmConnect Vision</h2>
+            <p>FarmConnect is an automation platform that will provide farmers with data-driven guidance to optimize their agricultural practices while reducing environmental impact.</p>
+            
+            <div class="farmconnect-features">
+                <div class="feature">
+                    <i class="fas fa-cloud-sun-rain"></i>
+                    <span>Weather & rainfall predictions</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Seasonal crop recommendations</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-vial"></i>
+                    <span>Fertilizer usage optimization</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-tint"></i>
+                    <span>Irrigation planning</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-robot"></i>
+                    <span>AI-powered farmer assistance</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-smog"></i>
+                    <span>GHG reduction strategies</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2><i class="fas fa-code"></i> Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">FarmConnect</h3>
+                        <p class="project-description">A web and mobile application that helps farmers optimize planting schedules, track crops, and reduce greenhouse gas emissions through data-driven insights.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Django REST</span>
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Weather API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> Code</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">EcoTrack</h3>
+                        <p class="project-description">An API for tracking and analyzing agricultural carbon footprints, helping farmers understand and reduce their environmental impact.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> Code</a>
+                            <a href="#"><i class="fas fa-book"></i> Documentation</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-cloud-sun-rain"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ClimateData API</h3>
+                        <p class="project-description">A RESTful API that provides historical and predictive climate data to help farmers make informed decisions about planting and harvesting.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Chart.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> Code</a>
+                            <a href="#"><i class="fas fa-server"></i> API</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2><i class="fas fa-graduation-cap"></i> Education & Certifications</h2>
+            <div class="certifications">
+                <div class="cert-card">
+                    <div class="cert-title">ALX Backend Web Development</div>
+                    <div class="cert-org">ALX Africa</div>
+                    <div class="cert-desc">Currently enrolled in intensive backend development program</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-title">Bachelor's Degree in Environmental Chemistry</div>
+                    <div class="cert-org">University of Rwanda</div>
+                    <div class="cert-desc">Focused on environmental compliance, industrial safety, and sustainability</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-title">AI Career Essentials</div>
+                    <div class="cert-org">ALX</div>
+                    <div class="cert-desc">Fundamentals of artificial intelligence and machine learning</div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-title">Software Development</div>
+                    <div class="cert-org">Power Learn Project</div>
+                    <div class="cert-desc">16-week program covering Python, Web Technologies, Database Management, and Dart with Flutter</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="github-stats">
+            <h2><i class="fas fa-chart-line"></i> GitHub Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">30</div>
+                    <div class="stat-label">Repositories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Contributions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Stars</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="quote">
+            <p>"Technology and sustainability can coexist to build a greener future."</p>
+        </div>
+
+        <section id="contact">
+            <h2><i class="fas fa-envelope"></i> Contact</h2>
+            <p>I'm always interested in connecting with others who are passionate about sustainable technology, agriculture innovation, or backend development. Feel free to reach out if you'd like to collaborate or just chat about tech!</p>
+            <p>Email: <a href="mailto:jonathantwizere@gmail.com">jonathantwizere@gmail.com</a></p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Jonathan Twizere. Powered by a vision for sustainable agriculture through technology.</p>
+    </footer>
+
+    <script>
+        // Simple animation for stats counting
+        document.addEventListener('DOMContentLoaded', function() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const values = [30, 12, 8, 10];
+            const duration = 2000;
+            const interval = 50;
+            
+            statNumbers.forEach((stat, index) => {
+                let startValue = 0;
+                let endValue = values[index];
+                let steps = duration / interval;
+                let increment = Math.ceil(endValue / steps);
+                let current = 0;
+                
+                let timer = setInterval(() => {
+                    current += increment;
+                    if (current >= endValue) {
+                        current = endValue;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = current;
+                }, interval);
+            });
+        });
+    </script>
+</body>
+</html>
