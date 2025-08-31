@@ -1,7 +1,7 @@
 // Simple animation for stats counting
 document.addEventListener('DOMContentLoaded', function() {
     const statNumbers = document.querySelectorAll('.stat-number');
-    const values = [15, 127, 8, 24];
+    const values = [35, 12, 8, 2];
     const duration = 2000;
     const interval = 50;
     
