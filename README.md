@@ -25,3 +25,6 @@ FarmConnect will provide:
 
 ### ⚡ Fun fact
 My journey into tech was inspired by my background in Environmental Chemistry and the desire to make agriculture more sustainable!
+
+# Jonathan1
+application for farmers empowerment
